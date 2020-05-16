@@ -1,32 +1,83 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <fileprocess
+      v-bind:holeCirclesArry="holeCirclesArry"
+      v-on:initHoleCirclesArry="initHoleCirclesArry($event)"
+    ></fileprocess>
+    <initialize v-bind:holeCirclesArry="holeCirclesArry"></initialize>
+    <app-header />
+    <router-view />
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Fileprocess from "./components/Fileproc.vue";
+import Initialize from "./components/Initialize.vue";
+import Header from "./components/layout/Header";
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  name: "App",
+  components: {
+    fileprocess: Fileprocess,
+    initialize: Initialize,
+    "app-header": Header
+  },
+  data() {
+    return {
+      holeCirclesArry: []
+    };
+  },
+  methods: {
+    initHoleCirclesArry(holeCirclesArry) {
+      this.holeCirclesArry = holeCirclesArry;
     }
   }
-}
+};
+</script>
+
+<style lang="scss">
+*{
+    color: rgb(125, 186, 133);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    list-style-type: none;
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  body {
+    background: rgb(240, 240, 240);
+    margin: 0 auto;
+  }
+
+  input {
+    font-size: 30px;
+    height: 55px;
+    width: 50px;
+    text-align: center;
+    
+    border: none;
+    border-radius: 10%;
+    background: grey;
+    color: white;
+    &:hover {
+      background-color: black;
+      color: lightgray;
+    }
+  }
+
+  /*Turn off input spinners*/
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
 </style>
