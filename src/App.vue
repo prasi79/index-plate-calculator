@@ -40,7 +40,7 @@ export default {
     color: rgb(125, 186, 133);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 30px;
     list-style-type: none;
     &:hover {
       cursor: default;
@@ -50,6 +50,7 @@ export default {
   body {
     background: rgb(240, 240, 240);
     margin: 0 auto;
+    text-align: center;
   }
 
   input {

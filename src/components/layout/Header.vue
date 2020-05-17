@@ -20,9 +20,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
-$breakpoint-tablet: 550px;
-$breakpoint-phone: 450px;
+<style scoped lang="scss">
+$breakpoint-tablet: 650px;
+$breakpoint-phone: 500px;
 
 nav {
   background: rgba(160, 105, 255, 0.1);

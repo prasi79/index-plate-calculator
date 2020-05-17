@@ -1,20 +1,20 @@
 <template>
   <div class="wrapper">
-    <section class="input-section">
-      <div id="divs-requied-text">Division <br> requied</div>
-      <div id="divs-requied-input"><input v-on:keyup="calculation()" v-model="input.division" type="number"></div>
-      <div id="gear-ratio-text">Gear ratio</div>
-      <div id="gear-ratio-input"><input v-on:keyup="calculation()" v-model="input.gearRatio" type="number"></div>
+    <section class="input">
+      <div id="divsrequied-text">Division <br> requied</div>
+      <div id="divsrequied-input"><input v-on:keyup="calculation()" v-model="input.division" type="number"></div>
+      <div id="gearratio-text">Gear ratio</div>
+      <div id="gearratio-input"><input v-on:keyup="calculation()" v-model="input.gearRatio" type="number"></div>
     </section>
     
-    <section class="output-section">
-      <section class="full-revs-section">
-        <div id="full-revs-text">Full revs.</div>
-        <div id="full-revs-output">{{ this.output.wholeNum }}</div>
+    <section class="output">
+      <section class="fullrevs">
+        <div id="fullrevs-text">Full revs.</div>
+        <div id="fullrevs-output">{{ this.output.wholeNum }}</div>
         <div id="and-text">and</div>
       </section>
 
-      <section class="remainder-section">
+      <section class="remainder">
         <div id="remainder-output">{{ this.output.remain }}</div>
       </section>
     </section>
@@ -95,51 +95,51 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 
-$breakpoint-tablet: 550px;
-$breakpoint-phone: 450px;
-$breakpoint-smallscreen: 390px;
+$breakpoint-tablet: 650px;
+$breakpoint-phone: 500px;
+$breakpoint-smallscreen: 420px;
 
 .wrapper {
-  max-width: 500px;
+  max-width: 960px;
   margin: 0 auto;
 
-  .input-section{
+  section.input{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-items: center;
-    text-align: center;
-    margin: 10px 50px 0px 50px;
-    position: relative;
-    left: 0px;
+    margin: 10px auto;
+    max-width: 50%;
+    min-width: 380px;
   }
 
-  .output-section {
+  section.output {
     display: grid;
-    grid-template-columns: 1fr 340px;
-    text-align: center;
-    margin-top: 10px;
-    position: relative;
-    left: 0px;
-    .full-revs-section{
+    grid-template-columns: 1fr auto;
+    margin: 20px auto;
+    max-width: 70%;
+    min-width: 620px;
+    
+    section.fullrevs{
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       align-items: center;
-      height: 58px;
-      #full-revs-output {
+      height: 80px;
+      #fullrevs-output {
         color: salmon;
-        font-size: 50px;
+        font-size: 80px;
       }
     }
-    .remainder-section {
+    section.remainder {
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: 1fr;
-      margin: 0 auto;
+      margin: 0 0 0 15px;
       #remainder-output {
-        width: 340px;
+        width: 403px;
         color: salmon;
+        font-size: 25px;
       }
     }
   }
@@ -147,25 +147,29 @@ $breakpoint-smallscreen: 390px;
 
 @media (max-width: $breakpoint-tablet) {
   .wrapper {
-    .input-section {
-      margin: 20px auto;
+    section.input {
+      margin: 10px auto;
       max-width: 70%;
     }
-    .output-section {
+    section.output {
       grid-template-columns: 1fr;
-      grid-template-rows: 92px 1fr;
-      .full-revs-section {
-        margin: 0px auto;
-        max-width: 65%;
-        #full-revs-text {
+      grid-template-rows: 100px 1fr;
+      min-width: 450px;
+      section.fullrevs {
+        margin: 0 auto;
+        max-width: 60%;
+        #fullrevs-text {
           font-size: 40px;
         }
-        #full-revs-output {
+        #fullrevs-output {
           font-size: 80px;
         }
         #and-text{
           font-size: 50px;
         }
+      }
+      section.remainder {
+        margin: 0 auto;
       }
     }
   }
@@ -173,39 +177,42 @@ $breakpoint-smallscreen: 390px;
 
 @media (max-width: $breakpoint-phone) {
   .wrapper {
-    .input-section {
+    section.input {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      margin: 0px auto;
-      max-width: 65%;
-      width: 210px;
-      div {
-       margin: 5px 0;
-      }
+      margin: 10px auto;
+      min-width: 250px;
+      max-width: 56%;
     }
-    .output-section {
+    section.output {
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr;
-      .full-revs-section {
+      min-width: 400px;
+      section.fullrevs {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr;
-
-        #full-revs-output {
-          margin: -10px 0 -25px 0;
+        #fullrevs-output {
+          margin: -10px 0 -15px 0;
         }
       }
+    }
+    section.remainder {
+      position: relative;
+      bottom: 30px;
     }
   }
 }
 
 @media (max-width: $breakpoint-smallscreen) {
   .wrapper {
-    .output-section {
+    section.output {
       grid-template-rows: 170px 1fr;
-      .remainder-section {
+      min-width: 300px;
+      section.remainder {
+        bottom: 0px;
         #remainder-output {
           font-size: 18px;
-          width: 300px;
+          max-width: 300px;
         }
       }
       
